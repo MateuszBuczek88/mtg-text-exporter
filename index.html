@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTG Text Exporter for NotebookLM</title>
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- jsPDF Library for PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="glass-container">
+        <header>
+            <h1>MTG Text Exporter</h1>
+            <p>Fetch Scryfall set text data and export as a clean PDF for NotebookLM digestion.</p>
+        </header>
+
+        <main>
+            <section class="config-panel">
+                <div class="input-group autocomplete-wrapper">
+                    <label for="set-code">Set (Code or Name)</label>
+                    <input type="text" id="set-code" placeholder="Type set code or name... e.g. mkm" autocomplete="off" />
+                    <ul id="set-suggestions" class="suggestions-list hidden"></ul>
+                </div>
+                
+                <div class="input-group">
+                    <label for="font-size">PDF Font Size (pt)</label>
+                    <input type="number" id="font-size" value="10" min="6" max="24" />
+                </div>
+
+                <div class="button-group">
+                    <button id="fetch-btn" class="btn primary">
+                        <span class="btn-text">Fetch Cards</span>
+                        <div class="loader hidden" id="fetch-loader"></div>
+                    </button>
+                    <button id="export-btn" class="btn secondary" disabled>
+                        <span class="btn-text">Export to PDF</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="status-panel">
+                <p id="status-message" class="status-message text-muted">Ready to fetch.</p>
+            </section>
+
+            <section class="preview-panel">
+                <h2>Data Preview</h2>
+                <div id="preview-content" class="preview-content">
+                    <p class="empty-state">No cards fetched yet.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
